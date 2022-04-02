@@ -1,0 +1,16 @@
+<div class="container w-50">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
+
+  <p>
+    <strong>Work hours per day:</strong>
+    <%= @user.work_hours_per_day %>
+  </p>
+
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', users_path %>
+</div>

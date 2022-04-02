@@ -1,0 +1,26 @@
+<div class="container w-50">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @worklog.user_id %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= @worklog.date %>
+  </p>
+
+  <p>
+    <strong>Hours:</strong>
+    <%= @worklog.hours %>
+  </p>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= @worklog.notes %>
+  </p>
+
+  <%= link_to 'Edit', edit_worklog_path(@worklog) %> |
+  <%= link_to 'Back', worklogs_path %>
+</div>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Worklogs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+      <th>Hours</th>
+      <th>Notes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @worklogs.each do |worklog| %>
+      <tr>
+        <td><%= worklog.user_id %></td>
+        <td><%= worklog.date %></td>
+        <td><%= worklog.hours %></td>
+        <td><%= worklog.notes %></td>
+        <td><%= link_to 'Show', worklog %></td>
+        <td><%= link_to 'Edit', edit_worklog_path(worklog) %></td>
+        <td><%= link_to 'Destroy', worklog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Worklog', new_worklog_path %>
