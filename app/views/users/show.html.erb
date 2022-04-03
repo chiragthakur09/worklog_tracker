@@ -11,6 +11,38 @@
     <%= @user.work_hours_per_day %>
   </p>
 
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <h1>Logs</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Hours</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @logs.each do |log| %>
+        <tr>
+          <td><%= log.date %></td>
+          <td><%= log.hours %></td>
+          <td><%= log.notes %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>Total hours work</td>
+        <td colspan="2" class="<%= (@user.work_hours_per_day > @logs.sum(:hours)) ? 'table-danger': 'table-success'%>"><%= @logs.sum(:hours) %></td>
+      </tr>
+      <% @per_week_total_hours.each do |week, hours|%>
+        <tr>
+          <td>Calender week <%= week %></td>
+          <td colspan="2" class="<%= (@user.work_hours_per_day > hours) ? 'table-danger': 'table-success'%>"><%= hours %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%#= link_to 'Edit', edit_user_path(@user) %>
   <%= link_to 'Back', users_path %>
 </div>
