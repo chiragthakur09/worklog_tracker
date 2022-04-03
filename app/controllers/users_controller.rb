@@ -8,6 +8,14 @@ class UsersController < ApplicationController
 
   # GET /users/1 or /users/1.json
   def show
+    @logs = Worklog.where(user_id: params[:id])
+    @log_by_calendar_weeks = @logs.all.map { |log| [log.date,log.hours]}.group_by { |h,v| h.cweek}
+    @per_week_total_hours = {}
+    @log_by_calendar_weeks.each do |week, log|
+      sum = 0
+      log.each {|l| sum += l[1]}
+      @per_week_total_hours[week] = sum
+    end
   end
 
   # GET /users/new

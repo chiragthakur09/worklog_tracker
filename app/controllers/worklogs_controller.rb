@@ -13,6 +13,7 @@ class WorklogsController < ApplicationController
   # GET /worklogs/new
   def new
     @worklog = Worklog.new
+    @worklog.user_id = params[:user_id]
   end
 
   # GET /worklogs/1/edit
@@ -22,10 +23,10 @@ class WorklogsController < ApplicationController
   # POST /worklogs or /worklogs.json
   def create
     @worklog = Worklog.new(worklog_params)
-
+    @user = @worklog.user
     respond_to do |format|
       if @worklog.save
-        format.html { redirect_to worklog_url(@worklog), notice: "Worklog was successfully created." }
+        format.html { redirect_to users_url(@user), notice: "Worklog was successfully created." }
         format.json { render :show, status: :created, location: @worklog }
       else
         format.html { render :new, status: :unprocessable_entity }

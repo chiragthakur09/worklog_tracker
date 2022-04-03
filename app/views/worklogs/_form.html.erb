@@ -10,28 +10,27 @@
       </ul>
     </div>
   <% end %>
+<div class="container w-50">
+  <%= form.hidden_field :user_id, value: @worklog.user_id %>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.label :date, class: "form-label p-1 m-1" %>
+    <%= form.date_select :date, class: "form-control p-1 m-1" %>
   </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
+  <div class="field d-flex">
+    <%= form.label :hours, class: "form-label p-1 m-1" %>
+    <%= form.number_field :hours, step: 0.5, class: 'form-control p-1 m-1' %>
   </div>
 
-  <div class="field">
-    <%= form.label :hours %>
-    <%= form.number_field :hours, step: 0.5 %>
+  <div class="field d-flex">
+    <%= form.label :notes,class: "form-label p-1 m-1" %>
+    <%= form.text_field :notes, class: 'form-control p-1 m-1'  %>
   </div>
 
-  <div class="field">
-    <%= form.label :notes %>
-    <%= form.text_field :notes %>
+  <div class="actions text-end">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
